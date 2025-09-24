@@ -1,0 +1,4 @@
+theme: jekyll-theme-primer
+title: TodoApp01
+description: A Next.js Todo Application
+baseurl: "/TodoApp01"

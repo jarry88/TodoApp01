@@ -31,8 +31,22 @@ jobs:
         run: npm run build
         working-directory: ./yt-react-nextjs-tips-main
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Copy build output to docs
+        run: |
+          rm -rf docs/* || true
+          cp -r ./yt-react-nextjs-tips-main/out/* docs/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./yt-react-nextjs-tips-main/out
+          source: ./docs
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v3
