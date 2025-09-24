@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/yt-react-nextjs-tips-main/node_modules
+/yt-react-nextjs-tips-main/.pnp
+/yt-react-nextjs-tips-main/.pnp.*
+/yt-react-nextjs-tips-main/.yarn/*
+!/yt-react-nextjs-tips-main/.yarn/patches
+!/yt-react-nextjs-tips-main/.yarn/plugins
+!/yt-react-nextjs-tips-main/.yarn/releases
+!/yt-react-nextjs-tips-main/.yarn/versions
+
+# testing
+/yt-react-nextjs-tips-main/coverage
+
+# next.js
+/yt-react-nextjs-tips-main/.next/
+
+# production
+/yt-react-nextjs-tips-main/build
+/node_modules
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
