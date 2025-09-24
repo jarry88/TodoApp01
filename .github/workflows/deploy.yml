@@ -11,6 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -34,22 +39,13 @@ jobs:
         run: npm run build
         working-directory: ./yt-react-nextjs-tips-main
 
-      - name: Copy build output to docs
-        run: |
-          rm -rf docs/* || true
-          cp -r ./yt-react-nextjs-tips-main/out/* docs/
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./docs
-          destination: ./_site
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./yt-react-nextjs-tips-main/out
 
       - name: Deploy to GitHub Pages
         id: deployment
